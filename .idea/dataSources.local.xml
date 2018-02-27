@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="tax_auto_system - @localhost" uuid="68a65ad0-ffde-4e8c-ac2d-2383653765b1">
+      <secret-storage>master_key</secret-storage>
+      <user-name>taxadmin</user-name>
+    </data-source>
+  </component>
+</project>

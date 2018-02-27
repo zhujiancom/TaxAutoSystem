@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <title>Login</title>
+    <link rel="stylesheet" href="webjars/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/login.css" />
+
+    <script type="text/javascript">
+//        $(function(){
+//            $("#loginBtn").click(function(){
+//                var userName = $("#userName").val();
+//                var password = $("#password").val();
+//                console.log("username = "+userName+", password = "+password);
+//                var param = {"loginName":userName,"password":password};
+//                $.post("login/doLogin",param).done(function(data){
+//                    console.log("result data = "+data);
+//                });
+//            });
+//        });
+    </script>
+</head>
+<body class="bg_fluid">
+<div class="form-bg">
+    <form class="form-horizontal" id="loginForm" action="@{/login}" method="post">
+        <span class="heading">Login</span>
+        <div class="form-group">
+            <input type="email" class="form-control" id="userName" placeholder="User Name Or Email"/>
+            <i class="fa fa-user"></i>
+        </div>
+        <div class="form-group help">
+            <input type="password" class="form-control" id="password" placeholder="Password">
+            <i class="fa fa-lock"></i>
+            <a href="#" class="fa fa-question-circle"></a>
+        </div>
+        <div class="form-group">
+            <div class="main-checkbox">
+                <input type="checkbox" value="None" id="checkbox1" name="check"/>
+                <label for="checkbox1"></label>
+            </div>
+            <span class="text">Remember me</span>
+            <button type="button" class="btn btn-default" id="loginBtn">Login</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

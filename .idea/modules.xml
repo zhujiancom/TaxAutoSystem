@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TaxAutoSystem.iml" filepath="$PROJECT_DIR$/TaxAutoSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TaxEntryWeb/TaxEntryWeb.iml" filepath="$PROJECT_DIR$/TaxEntryWeb/TaxEntryWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TaxSystemCore/TaxSystemCore.iml" filepath="$PROJECT_DIR$/TaxSystemCore/TaxSystemCore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TaxSystemDB/TaxSystemDB.iml" filepath="$PROJECT_DIR$/TaxSystemDB/TaxSystemDB.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TaxSystemJAXB/TaxSystemJAXB.iml" filepath="$PROJECT_DIR$/TaxSystemJAXB/TaxSystemJAXB.iml" />
+    </modules>
+  </component>
+</project>
