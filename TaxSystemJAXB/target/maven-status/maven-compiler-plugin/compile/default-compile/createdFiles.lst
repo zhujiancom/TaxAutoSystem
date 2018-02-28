@@ -1,7 +1,0 @@
-com\ey\tax\utils\JAXBUtil.class
-com\ey\tax\jaxb\Result.class
-com\ey\tax\jaxb\Request.class
-com\ey\tax\jaxb\ResultBodyType.class
-com\ey\tax\jaxb\RequestBodyType.class
-com\ey\tax\jaxb\ObjectFactory.class
-com\ey\tax\jaxb\RecordType.class
