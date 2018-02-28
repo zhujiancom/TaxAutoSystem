@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="TaxEntryWeb:war">
-    <output-path>$PROJECT_DIR$/TaxEntryWeb/target</output-path>
-    <root id="archive" name="TaxEntryWeb.war">
-      <element id="artifact" artifact-name="TaxEntryWeb:war exploded" />
-    </root>
-  </artifact>
-</component>
