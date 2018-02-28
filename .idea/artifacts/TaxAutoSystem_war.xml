@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="TaxAutoSystem:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="TaxAutoSystem.war">
-      <element id="artifact" artifact-name="TaxAutoSystem:war exploded" />
-    </root>
-  </artifact>
-</component>
