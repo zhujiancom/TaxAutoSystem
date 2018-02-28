@@ -1,6 +1,8 @@
 package com.ey.tax.utils;
 
 import java.math.BigDecimal;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.math.BigDecimal.ROUND_HALF_EVEN;
 
@@ -46,5 +48,21 @@ public final class DigitUtil {
      */
     public static BigDecimal add(BigDecimal addend, BigDecimal augend){
         return addend.add(augend).setScale(8,ROUND_HALF_EVEN);
+    }
+
+    public static BigDecimal scale(BigDecimal number){
+        return scale(2,number);
+    }
+
+    public static BigDecimal scale(int scale,BigDecimal number){
+        return number.setScale(scale,BigDecimal.ROUND_HALF_EVEN);
+    }
+
+    public static boolean isDigit(String value){
+        Matcher matcher = Pattern.compile("^\\d+$").matcher(value);
+        if(matcher.find()){
+            return true;
+        }
+        return false;
     }
 }
