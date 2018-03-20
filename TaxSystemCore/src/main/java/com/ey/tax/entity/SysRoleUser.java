@@ -9,7 +9,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="Sys_Role_User")
-public class SysRoleUser{
+public class SysRoleUser extends BaseEntity{
     @Column(name = "SYS_USER_ID")
     private Long userId;
 

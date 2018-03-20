@@ -1,6 +1,9 @@
 package com.ey.tax.entity;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +15,7 @@ import java.io.Serializable;
  * Created by zhuji on 2/8/2018.
  */
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity implements Serializable,Cloneable{
 
     private static final long serialVersionUID = 4193639506903096974L;
