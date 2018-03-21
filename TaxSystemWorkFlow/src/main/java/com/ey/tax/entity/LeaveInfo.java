@@ -17,6 +17,9 @@ public class LeaveInfo extends BaseEntity{
     @Column(name="leaveMsg")
     private String leaveMsg;
 
+    @Column(name="taskId")
+    private String taskId;
+
     public String getStatus() {
         return status;
     }
@@ -31,5 +34,13 @@ public class LeaveInfo extends BaseEntity{
 
     public void setLeaveMsg(String leaveMsg) {
         this.leaveMsg = leaveMsg;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
     }
 }
