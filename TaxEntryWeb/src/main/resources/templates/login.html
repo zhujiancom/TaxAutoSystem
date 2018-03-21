@@ -6,7 +6,7 @@
     <script src="webjars/bootstrap/js/bootstrap.min.js"></script>
     <title>Login</title>
     <link rel="stylesheet" href="webjars/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
 
     <script type="text/javascript">
         $(function(){
@@ -20,10 +20,13 @@
                 });
             });
         });
+
+        $("#testCalendar").mycalendar();
     </script>
 </head>
 <body class="bg_fluid">
 <div class="form-bg">
+    <div id="testCalendar"></div>
     <form class="form-horizontal" id="loginForm" th:action="@{/login}" method="post">
         <span class="heading">Login</span>
         <div class="form-group">

@@ -44,6 +44,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.ey.tax</groupId>
+            <artifactId>TaxSystemWorkFlow</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>

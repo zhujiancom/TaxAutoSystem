@@ -25,7 +25,7 @@
             this.$element.append(this.buildCalHeader());
             this.$element.append(this.buildCalBody());
             this.loadingImg = document.createElement('img');
-            $(this.loadingImg).addClass('loading').attr('src',this.options.rootpath+'/js/mycalendar/images/ajax_loader_1.gif').css('display','none');
+            $(this.loadingImg).addClass('loading').attr('src',this.options.rootpath+'/plugins/mycalendar/images/ajax_loader_1.gif').css('display','none');
             this.$element.append(this.loadingImg);
             $(document.body).append(this.buildModal());
             var _self = this;

@@ -10,6 +10,7 @@ import org.springframework.security.access.expression.method.DefaultMethodSecuri
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
@@ -59,5 +60,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         DefaultWebSecurityExpressionHandler defaultWebSecurityExpressionHandler = new DefaultWebSecurityExpressionHandler();
         defaultWebSecurityExpressionHandler.setDefaultRolePrefix("");
         return defaultWebSecurityExpressionHandler;
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/resources/static/**")
+                .and().ignoring().antMatchers("/static/**")
+                .and().ignoring().antMatchers("/bootstrap/**")
+                .and().ignoring().antMatchers("/fragments/**")
+                .and().ignoring().antMatchers("/**/*.js")
+                .and().ignoring().antMatchers("/**/*.css")
+                .and().ignoring().antMatchers("/hello");
     }
 }
