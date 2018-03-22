@@ -19,7 +19,7 @@ public class SysUser extends AccessoryEntity{
     private String password;
 
     @Column(name="ENABLE")
-    private boolean enable;
+    private boolean enable = true;
 
     /**
      * online or offline

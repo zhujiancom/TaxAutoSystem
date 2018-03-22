@@ -6,7 +6,7 @@
         select * from sys_permission;
     </select>
 
-    <select id="findByAdminUserId" parameterType="int" resultType="com.ey.tax.entity.SysPermission">
+    <select id="findByUserId" parameterType="long" resultType="com.ey.tax.entity.SysPermission">
         select p.*
           from sys_user u
           left join sys_role_user sru on u.id = sru.sys_user_id

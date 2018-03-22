@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Dashboard</title>
+    <link rel="stylesheet" href="webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
-    Dashboard
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" class="btn btn-primary" value="LogOut"/>
+    </form>
 </body>
 </html>

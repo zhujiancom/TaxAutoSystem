@@ -1,9 +1,10 @@
 package com.ey.tax.configuration;
 
 import com.ey.tax.configuration.security.SysUserService;
+import com.ey.tax.security.LoginSuccessHandler;
+import com.ey.tax.security.CustomLogoutSuccessHandler;
 import com.ey.tax.service.MyFilterSecurityInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
@@ -24,15 +25,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyFilterSecurityInterceptor myFilterSecurityInterceptor;
 
+    @Autowired
+    private LoginSuccessHandler loginSuccessHandler;
+
+    @Autowired
+    private CustomLogoutSuccessHandler logoutSuccessHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        loginSuccessHandler.setDefaultTargetUrl("/");
+        loginSuccessHandler.setForwardToDestination(true);
+        logoutSuccessHandler.setDefaultTargetUrl("/login");
         http.authorizeRequests().anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/")
+                .formLogin().loginPage("/login").successHandler(loginSuccessHandler)
                 .failureUrl("/login?error")
                 .permitAll()
                 .and()
-                .logout().logoutSuccessUrl("/")
+                .logout().logoutSuccessHandler(logoutSuccessHandler)
                 .permitAll();
         http.sessionManagement().maximumSessions(1);
         http.addFilterBefore(myFilterSecurityInterceptor, FilterSecurityInterceptor.class);

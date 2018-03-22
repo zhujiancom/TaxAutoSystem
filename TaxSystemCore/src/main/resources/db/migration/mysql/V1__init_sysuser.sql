@@ -13,8 +13,8 @@ CREATE TABLE if not exists `sys_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert into SYS_USER(id,username,password,version) values (1,'admin','5f4dcc3b5aa765d61d8327deb882cf99',0);
-insert into sys_user(id,username,password,version) values (2,'test','098f6bcd4621d373cade4e832627b4f6',0);
+insert into SYS_USER(id,username,password,enable,version) values (1,'admin','5f4dcc3b5aa765d61d8327deb882cf99',1,0);
+insert into sys_user(id,username,password,version) values (2,'test','098f6bcd4621d373cade4e832627b4f6',1,0);
 
 CREATE TABLE if NOT EXISTS `sys_role` (
  `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -55,8 +55,8 @@ CREATE TABLE if not EXISTS `sys_permission` (
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-insert into sys_permission(name,description,url,pid,version) values ('role_home','home','/',null,0);
-insert into sys_permission(name,description,url,pid,version) values ('role_admin','test','/admin',null,0);
+insert into sys_permission(id,name,description,url,pid,version) values (1,'role_home','home','/',null,0);
+insert into sys_permission(id,name,description,url,pid,version) values (2,'role_admin','test','/admin',null,0);
 
 CREATE TABLE IF NOT EXISTS `sys_permission_role` (
  `id` bigint(20) NOT NULL AUTO_INCREMENT,

@@ -9,19 +9,6 @@
     <link rel="stylesheet" th:href="@{/css/login.css}" />
 
     <script type="text/javascript">
-        $(function(){
-            $("#loginBtn").click(function(){
-                var userName = $("#userName").val();
-                var password = $("#password").val();
-                console.log("username = "+userName+", password = "+password);
-                var param = {"loginName":userName,"password":password};
-                $.post("login/doLogin",param).done(function(data){
-                    console.log("result data = "+data);
-                });
-            });
-        });
-
-        $("#testCalendar").mycalendar();
     </script>
 </head>
 <body class="bg_fluid">
@@ -30,11 +17,11 @@
     <form class="form-horizontal" id="loginForm" th:action="@{/login}" method="post">
         <span class="heading">Login</span>
         <div class="form-group">
-            <input type="email" class="form-control" id="userName" placeholder="User Name Or Email"/>
+            <input type="text" class="form-control" id="username" name="username" placeholder="User Name Or Email"/>
             <i class="fa fa-user"></i>
         </div>
         <div class="form-group help">
-            <input type="password" class="form-control" id="password" placeholder="Password"/>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password"/>
             <i class="fa fa-lock"></i>
             <a href="#" class="fa fa-question-circle"></a>
         </div>
@@ -44,7 +31,7 @@
                 <label for="checkbox1"></label>
             </div>
             <span class="text">Remember me</span>
-            <button type="button" class="btn btn-default" id="loginBtn">Login</button>
+            <button type="submit" class="btn btn-default" id="loginBtn">Login</button>
         </div>
     </form>
 </div>
