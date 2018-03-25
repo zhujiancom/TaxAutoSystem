@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         loginSuccessHandler.setDefaultTargetUrl("/");
-        loginSuccessHandler.setForwardToDestination(true);
+        loginSuccessHandler.setForwardToDestination(false);
         logoutSuccessHandler.setDefaultTargetUrl("/login");
         http.authorizeRequests().anyRequest().authenticated()
                 .and()
