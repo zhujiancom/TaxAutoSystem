@@ -1,15 +1,16 @@
 package com.ey.tax.configuration.security;
 
 import com.ey.tax.core.dao.PermissionDAO;
+import com.ey.tax.core.dao.PrivilegeDAO;
 import com.ey.tax.core.repository.SysUserRepository;
 import com.ey.tax.entity.SysPermission;
+import com.ey.tax.entity.SysRole;
 import com.ey.tax.entity.SysUser;
+import com.ey.tax.security.MyGrantedAuthority;
 import com.ey.tax.security.SecurityUser;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,14 +28,22 @@ public class SysUserService implements UserDetailsService {
     @Autowired
     PermissionDAO permissionDAO;
 
+    @Autowired
+    private PrivilegeDAO privilegeDAO;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         SysUser user = sysUserRepository.findByUserName(username);
         if(user != null){
-            List<SysPermission> permissions = permissionDAO.findByUserId(user.getId());
-            List<GrantedAuthority> grantedAuthorities = permissions.stream()
-                    .filter(permission -> permission != null && StringUtils.isNotEmpty(permission.getName()))
-                    .map(permission -> new SimpleGrantedAuthority(permission.getName())) //将权限信息添加到GrantedAuthority对象中，在后面进行权限验证是会使用到grantedAuthority对象
+            List<SysRole> roles = privilegeDAO.findRolesByUser(user.getId());
+            List<GrantedAuthority> grantedAuthorities = roles.stream()
+                    .filter(role -> role != null && StringUtils.isNotEmpty(role.getRoleName()))
+                    .map(role -> {
+                        MyGrantedAuthority grantedAuthority = new MyGrantedAuthority(role.getRoleName());
+                        List<SysPermission> permissions = privilegeDAO.findPermissionsByRole(role.getId());
+                        grantedAuthority.setPermissions(permissions);
+                        return grantedAuthority;
+                    }) //将角色信息添加到GrantedAuthority对象中，在后面进行权限验证是会使用到grantedAuthority对象
                     .collect(Collectors.toList());
             return new SecurityUser(user.getId(),user.getUserName(),user.getPassword(),grantedAuthorities);
         }else{

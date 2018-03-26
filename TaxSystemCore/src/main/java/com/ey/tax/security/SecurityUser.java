@@ -12,6 +12,8 @@ import java.util.Collection;
 public class SecurityUser extends User {
     private Long id;
 
+    private Integer loginAccount;
+
     public SecurityUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
     }

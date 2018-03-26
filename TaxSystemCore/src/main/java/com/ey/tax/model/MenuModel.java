@@ -1,30 +1,19 @@
-package com.ey.tax.entity;
+package com.ey.tax.model;
 
-import org.hibernate.annotations.NaturalId;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import java.util.List;
 
 /**
- * 菜单表
+ * Created by zhuji on 3/26/2018.
  */
-@Entity
-@Table(name="t_sys_menu")
-public class SysMenu extends BaseEntity {
+public class MenuModel {
 
-    @Column(name="menu_name")
-    @NaturalId
     private String menuName;
 
-    @Column(name="menu_url")
     private String menuUrl;
 
-    @Column(name="description")
     private String description;
 
-    @Column(name="pid")
-    private Long parentId;
+    List<MenuModel> subMenuList;
 
     public String getMenuName() {
         return menuName;
@@ -50,11 +39,11 @@ public class SysMenu extends BaseEntity {
         this.description = description;
     }
 
-    public Long getParentId() {
-        return parentId;
+    public List<MenuModel> getSubMenuList() {
+        return subMenuList;
     }
 
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
+    public void setSubMenuList(List<MenuModel> subMenuList) {
+        this.subMenuList = subMenuList;
     }
 }

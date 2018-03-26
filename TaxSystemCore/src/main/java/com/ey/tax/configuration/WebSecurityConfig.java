@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 
 /**
  * Created by zhuji on 2/9/2018.
@@ -46,6 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
         http.sessionManagement().maximumSessions(1);
         http.addFilterBefore(myFilterSecurityInterceptor, FilterSecurityInterceptor.class);
+        http.exceptionHandling().authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"));
     }
 
     @Override
@@ -80,6 +82,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().ignoring().antMatchers("/fragments/**")
                 .and().ignoring().antMatchers("/**/*.js")
                 .and().ignoring().antMatchers("/**/*.css")
-                .and().ignoring().antMatchers("/hello");
+                .and().ignoring().antMatchers("/**/*.woff");
     }
 }

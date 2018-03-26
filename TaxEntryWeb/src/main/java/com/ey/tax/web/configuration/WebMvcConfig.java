@@ -23,7 +23,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         VersionResourceResolver versionResourceResolver = new VersionResourceResolver()
                 .addVersionStrategy(new ContentVersionStrategy(), "/**");
-        registry.addResourceHandler("/javascript/**/*.js", "/**/*.css", "/**/*.png")
+        registry.addResourceHandler("/javascript/**/*.js", "/**/*.css", "/**/*.png","/**/*.woff","/**/*.woff2","/**/*.tff")
                 .addResourceLocations("classpath:/static/")
                 .setCachePeriod(60 * 60 * 24 * 365) /* one year */
                 .resourceChain(true)

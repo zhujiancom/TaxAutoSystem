@@ -10,27 +10,27 @@ import javax.persistence.Table;
  * Created by zhuji on 2/10/2018.
  */
 @Entity
-@Table(name="Sys_User")
+@Table(name="t_sys_user")
 public class SysUser extends AccessoryEntity{
-    @Column(name="USERNAME")
+    @Column(name="username")
     private String userName;
 
-    @Column(name="PASSWORD")
+    @Column(name="password")
     private String password;
 
-    @Column(name="ENABLE")
+    @Column(name="enable")
     private boolean enable = true;
 
     /**
      * online or offline
      */
-    @Column(name="LOGIN_STATUS")
+    @Column(name="login_status")
     private String loginStatus;
 
     /**
      * statistic login count
      */
-    @Column(name="LOGIN_COUNT")
+    @Column(name="login_count")
     private Integer loginCount;
 
     public String getUserName() {

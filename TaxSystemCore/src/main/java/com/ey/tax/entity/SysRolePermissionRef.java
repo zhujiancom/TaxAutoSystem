@@ -5,15 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Created by zhuji on 2/10/2018.
+ * 角色-权限关联表： 多对多关联
  */
 @Entity
-@Table(name="Sys_Permission_Role")
-public class SysPermissionRole extends BaseEntity{
-    @Column(name = "ROLE_ID")
+@Table(name="t_sys_role_permission_ref")
+public class SysRolePermissionRef extends BaseEntity{
+    @Column(name = "role_id")
     private Long roleId;
 
-    @Column(name = "PERMISSION_ID")
+    @Column(name = "permission_id")
     private Long permissionId;
 
     public Long getRoleId() {

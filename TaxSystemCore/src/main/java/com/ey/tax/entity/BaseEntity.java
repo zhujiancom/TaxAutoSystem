@@ -13,6 +13,7 @@ import java.io.Serializable;
 
 /**
  * Created by zhuji on 2/8/2018.
+ * 基础字段， 包含主键id（默认采用ID自增）, version
  */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
