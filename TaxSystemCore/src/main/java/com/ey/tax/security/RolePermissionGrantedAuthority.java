@@ -1,30 +1,30 @@
 package com.ey.tax.security;
 
-import com.ey.tax.entity.SysPermission;
+import com.ey.tax.model.PermissionModel;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.security.core.GrantedAuthority;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhuji on 3/26/2018.
  */
-public class MyGrantedAuthority implements GrantedAuthority{
+public class RolePermissionGrantedAuthority implements GrantedAuthority{
     private final String role;
 
-    private List<SysPermission> permissions;
+    private Map<String,PermissionModel> permissionMapping;
 
-    public MyGrantedAuthority(String role) {
+    public RolePermissionGrantedAuthority(String role) {
         this.role = role;
     }
 
-    public List<SysPermission> getPermissions() {
-        return permissions;
+    public Map<String, PermissionModel> getPermissionMapping() {
+        return permissionMapping;
     }
 
-    public void setPermissions(List<SysPermission> permissions) {
-        this.permissions = permissions;
+    public void setPermissionMapping(Map<String, PermissionModel> permissionMapping) {
+        this.permissionMapping = permissionMapping;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class MyGrantedAuthority implements GrantedAuthority{
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        MyGrantedAuthority that = (MyGrantedAuthority) o;
+        RolePermissionGrantedAuthority that = (RolePermissionGrantedAuthority) o;
 
         return new EqualsBuilder()
                 .append(role, that.role)
@@ -54,9 +54,9 @@ public class MyGrantedAuthority implements GrantedAuthority{
 
     @Override
     public String toString() {
-        return "MyGrantedAuthority{" +
+        return "RolePermissionGrantedAuthority{" +
                 "role='" + role + '\'' +
-                ", permissions=" + permissions +
+                ", permissions=" + permissionMapping +
                 '}';
     }
 }

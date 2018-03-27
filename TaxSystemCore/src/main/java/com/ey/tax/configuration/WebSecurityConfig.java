@@ -39,15 +39,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         logoutSuccessHandler.setDefaultTargetUrl("/login");
         http.authorizeRequests().anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").successHandler(loginSuccessHandler)
-                .failureUrl("/login?error")
+                .formLogin().successHandler(loginSuccessHandler)
                 .permitAll()
                 .and()
                 .logout().logoutSuccessHandler(logoutSuccessHandler)
-                .permitAll();
+                .permitAll()
+        ;
         http.sessionManagement().maximumSessions(1);
         http.addFilterBefore(myFilterSecurityInterceptor, FilterSecurityInterceptor.class);
-        http.exceptionHandling().authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"));
+        http.exceptionHandling().accessDeniedPage("/403").authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"));
     }
 
     @Override

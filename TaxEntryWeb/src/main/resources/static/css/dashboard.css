@@ -1,4 +1,4 @@
-@import "fontawesome/css/fontawesome-all.css";
+@import "../fontawesome/css/fontawesome-all.css";
 
 /*-------------------------------*/
 /*           VARIABLES           */
@@ -307,4 +307,16 @@ body a {
 }
 body a:hover {
     color: #ffffff;
+}
+
+.user_info_list{
+    list-style: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    border-top:solid 1px rgba(255, 255, 255, 0.9);
+}
+
+.user_info_list li{
+    height:32px;
+    line-height: 32px;
 }

@@ -1,8 +1,7 @@
 package com.ey.tax.service;
 
-import com.ey.tax.core.dao.PermissionDAO;
+import com.ey.tax.core.dao.PrivilegeDAO;
 import com.ey.tax.entity.SysPermission;
-import org.apache.xmlbeans.impl.xb.xmlconfig.ConfigDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
@@ -24,7 +23,7 @@ import java.util.List;
 @Service
 public class MyInvocationSecurityMetadataSourceService implements FilterInvocationSecurityMetadataSource {
     @Autowired
-    private PermissionDAO permissionDAO;
+    private PrivilegeDAO privilegeDAO;
 
     private HashMap<String,Collection<ConfigAttribute>> map;
 
@@ -35,7 +34,7 @@ public class MyInvocationSecurityMetadataSourceService implements FilterInvocati
         map = new HashMap<>();
         Collection<ConfigAttribute> array;
         ConfigAttribute cfg;
-        List<SysPermission> permissions = permissionDAO.findAll();
+        List<SysPermission> permissions = privilegeDAO.findAllPermissions();
         for(SysPermission permission: permissions){
             array = new ArrayList<>();
             cfg = new SecurityConfig(permission.getName());

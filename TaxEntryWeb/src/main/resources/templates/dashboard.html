@@ -10,7 +10,11 @@
 
 </head>
 <body>
-
+<div id="toolbar" class="row">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" class="btn btn-primary" value="LogOut"/>
+    </form>
+</div>
 <div id="wrapper">
     <div class="overlay"></div>
 
@@ -68,7 +72,41 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <p>Main page</p>
+                    <h2>Welcome <span th:text="${userInfo.name}"/> !</h2>
+                    <h1>User Information</h1>
+                    <br/>
+                    <nav >
+                        <ul class="user_info_list">
+                            <li>
+                                <div class="col-lg-3">Login Status: </div>
+                                <div class="col-lg-8"><span th:text="${userInfo.loginStatus}"/></div>
+                            </li>
+                            <li>
+                                <div class="col-lg-3">Account Status: </div>
+                                <div class="col-lg-8"><span th:text="${userInfo.accountStatus}"/></div>
+                            </li>
+                            <li>
+                                <div class="col-lg-3">Role: </div>
+                                <div class="col-lg-8"><span th:each="role : ${userInfo.roles}" th:text="${role.roleName}"/>,</div>
+                            </li>
+                            <li>
+                                <div class="col-lg-3">Create Man: </div>
+                                <div class="col-lg-8"><span th:text="${userInfo.createman}"/></div>
+                            </li>
+                            <li>
+                                <div class="col-lg-3">Create Date: </div>
+                                <div class="col-lg-8"><span th:text="${userInfo.createdate}"/></div>
+                            </li>
+                            <li>
+                                <div class="col-lg-3">Update Man: </div>
+                                <div class="col-lg-8"><span th:text="${userInfo.updateman}"/></div>
+                            </li>
+                            <li>
+                                <div class="col-lg-3">Update Date: </div>
+                                <div class="col-lg-8"><span th:text="${userInfo.updatedate}"/></div>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -80,7 +118,6 @@
 
 <script src="webjars/jquery/jquery.min.js"></script>
 <script src="webjars/bootstrap/js/bootstrap.min.js"></script>
-<script th:src="@{/javasript/plugins/asynmenu/mymenu.js}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         var trigger = $('.hamburger'),
@@ -108,12 +145,6 @@
 
         $('[data-toggle="offcanvas"]').click(function () {
             $('#wrapper').toggleClass('toggled');
-        });
-
-        $("#asynmenu").menulist({
-            url:'',
-            dataType:'json',
-            initParentId:0
         });
     });
 </script>

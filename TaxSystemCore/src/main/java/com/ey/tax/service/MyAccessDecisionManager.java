@@ -1,5 +1,7 @@
 package com.ey.tax.service;
 
+import com.ey.tax.model.PermissionModel;
+import com.ey.tax.security.RolePermissionGrantedAuthority;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by zhuji on 3/6/2018.
@@ -39,8 +42,12 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
             c = iter.next();
             needRole = c.getAttribute();
             for(GrantedAuthority ga : authentication.getAuthorities()){
-                if(needRole.trim().equals(ga.getAuthority())){
-                    return;
+                if(ga instanceof RolePermissionGrantedAuthority){
+                    RolePermissionGrantedAuthority mga = (RolePermissionGrantedAuthority) ga;
+                    Map<String,PermissionModel> permissionMapping = mga.getPermissionMapping();
+                    if(permissionMapping.containsKey(needRole.trim())){
+                        return;
+                    }
                 }
             }
         }

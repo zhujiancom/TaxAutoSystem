@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
 
 /**
  * Created by zhuji on 2/8/2018.
@@ -11,9 +14,5 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class AccountLoginController {
 
-//    @RequestMapping(value = "/login",method = RequestMethod.POST)
-//    public String login(String userName,String password){
-//
-//        return "dashboard";
-//    }
+
 }

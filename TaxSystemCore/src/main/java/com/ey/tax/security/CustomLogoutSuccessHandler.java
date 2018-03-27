@@ -1,8 +1,11 @@
 package com.ey.tax.security;
 
 import cn.hutool.core.date.DateUnit;
+import com.ey.tax.common.CommonEnums;
 import com.ey.tax.core.repository.AccountLoginLogRepository;
+import com.ey.tax.core.repository.SysUserRepository;
 import com.ey.tax.entity.AccountLoginLogEntity;
+import com.ey.tax.entity.SysUser;
 import com.ey.tax.utils.DateUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -29,6 +32,9 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
     @Autowired
     private AccountLoginLogRepository loginLogRepository;
 
+    @Autowired
+    private SysUserRepository userRepository;
+
     private String defaultTargetUrl;
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
@@ -42,6 +48,9 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
             loginLogEntity.setOfflineTime(DateUtil.getNowTimestamp());
             loginLogEntity.setStayTime(stayTime);
             loginLogRepository.saveAndFlush(loginLogEntity);
+            SysUser sysUser = userRepository.findOne(user.getId());
+            sysUser.setLoginStatus(CommonEnums.LoginStatus.OFFLINE.getCode().toString());
+            userRepository.saveAndFlush(sysUser);
         } catch (Exception e) {
             logger.warn("cannot record user logout log information.");
         }

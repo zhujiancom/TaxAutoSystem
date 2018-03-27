@@ -1,5 +1,6 @@
 package com.ey.tax.security;
 
+import com.ey.tax.common.CommonEnums;
 import com.ey.tax.core.repository.AccountLoginLogRepository;
 import com.ey.tax.core.repository.SysUserRepository;
 import com.ey.tax.entity.AccountLoginLogEntity;
@@ -42,6 +43,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     @Autowired
     private AccountLoginLogRepository loginLogRepository;
 
+    @Autowired
+    private SysUserRepository userRepository;
+
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = {Exception.class})
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -53,6 +57,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
             loginLogEntity.setOnlineTime(DateUtil.getNowTimestamp());
             loginLogEntity.setUserId(user.getId());
             loginLogRepository.saveAndFlush(loginLogEntity);
+            SysUser sysUser = userRepository.findOne(user.getId());
+            sysUser.setLoginStatus(CommonEnums.LoginStatus.ONLINE.getCode().toString());
+            sysUser.setLoginCount(sysUser.getLoginCount()+1);
+            userRepository.saveAndFlush(sysUser);
         } catch (Exception e) {
             logger.warn("cannot record user login log information.");
         }

@@ -3,6 +3,8 @@ package com.ey.tax.core.dao;
 import com.ey.tax.entity.SysPermission;
 import com.ey.tax.entity.SysRole;
 import com.ey.tax.entity.SysUser;
+import com.ey.tax.model.RoleModel;
+import com.ey.tax.model.UserModel;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,7 +14,9 @@ import java.util.List;
  */
 @Repository
 public interface PrivilegeDAO {
-    List<SysRole> findRolesByUser(Long userId);
+    List<RoleModel> findRolesByUser(Long userId);
 
-    List<SysPermission> findPermissionsByRole(Long roleId);
+    UserModel findUserById(Long userId);
+
+    List<SysPermission> findAllPermissions();
 }

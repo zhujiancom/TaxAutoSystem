@@ -25,6 +25,7 @@
         <javasimon-version>4.1.3</javasimon-version>
         <itextpdf-version>5.5.8</itextpdf-version>
         <mybatis-spring-boot-version>1.3.1</mybatis-spring-boot-version>
+        <dozer.version>5.5.1</dozer.version>
     </properties>
 
     <profiles>
@@ -230,6 +231,24 @@
                 <groupId>org.xhtmlrenderer</groupId>
                 <artifactId>flying-saucer-pdf-itext5</artifactId>
                 <version>9.0.3</version>
+            </dependency>
+
+            <!-- Dozer -->
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer</artifactId>
+                <version>${dozer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer-spring</artifactId>
+                <version>${dozer.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-version}</version>
             </dependency>
 
         </dependencies>
