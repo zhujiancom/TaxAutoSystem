@@ -10,5 +10,5 @@ import java.util.List;
  */
 @Repository
 public interface MenuDAO {
-    List<MenuModel> findMenuListByRole(Long roleId);
+    List<MenuModel> findMenuItemsByUserId(Long userId);
 }

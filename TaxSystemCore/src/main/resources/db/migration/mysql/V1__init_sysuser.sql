@@ -27,8 +27,8 @@ CREATE TABLE if not exists `t_sys_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert into t_sys_user(id,username,password,enable,version) values (1,'admin','5f4dcc3b5aa765d61d8327deb882cf99',1,0);
-insert into t_sys_user(id,username,password,enable,version) values (2,'general','5f4dcc3b5aa765d61d8327deb882cf99',1,0);
+insert into t_sys_user(id,username,password,enable,login_status,version) values (1,'admin','5f4dcc3b5aa765d61d8327deb882cf99',1,0,0);
+insert into t_sys_user(id,username,password,enable,login_status,version) values (2,'general','5f4dcc3b5aa765d61d8327deb882cf99',1,0,0);
 
 CREATE TABLE if NOT EXISTS `t_sys_role` (
  `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -102,17 +102,18 @@ CREATE TABLE if not EXISTS `t_sys_menu` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `version` int(11) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
+  `menu_name` varchar(255) DEFAULT NULL,
   `pid` bigint(20) DEFAULT NULL,
-  `url` varchar(255) DEFAULT NULL,
+  `menu_url` varchar(255) DEFAULT NULL,
+  `menu_level` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-insert into t_sys_menu(id,version,name,pid,url,description) values (1,0,'System Management',NULL,'/admin/menu/system','系统管理菜单');
-insert into t_sys_menu(id,version,name,pid,url,description) values (2,0,'User Management',1,'/admin/menu/user','用户管理菜单');
-insert into t_sys_menu(id,version,name,pid,url,description) values (3,0,'Permission Management',1,'/admin/menu/permission','权限管理菜单');
-insert into t_sys_menu(id,version,name,pid,url,description) values (4,0,'Role Management',1,'/admin/menu/role','角色管理菜单');
-insert into t_sys_menu(id,version,name,pid,url,description) values (5,0,'Role Management',1,'/admin/menu/organization','组织管理菜单');
+insert into t_sys_menu(id,version,menu_name,pid,menu_url,menu_level,description) values (1,0,'System Management',NULL,'/admin/menu/system',1,'系统管理菜单');
+insert into t_sys_menu(id,version,menu_name,pid,menu_url,menu_level,description) values (2,0,'User Management',1,'/admin/menu/user',2,'用户管理菜单');
+insert into t_sys_menu(id,version,menu_name,pid,menu_url,menu_level,description) values (3,0,'Permission Management',1,'/admin/menu/permission',2,'权限管理菜单');
+insert into t_sys_menu(id,version,menu_name,pid,menu_url,menu_level,description) values (4,0,'Role Management',1,'/admin/menu/role',2,'角色管理菜单');
+insert into t_sys_menu(id,version,menu_name,pid,menu_url,menu_level,description) values (5,0,'Role Management',1,'/admin/menu/organization',2,'组织管理菜单');
 
 CREATE TABLE if not EXISTS `t_sys_role_menu_ref` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,

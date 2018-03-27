@@ -31,7 +31,7 @@ public class SysUser extends AccessoryEntity{
      * statistic login count
      */
     @Column(name="login_count")
-    private Integer loginCount;
+    private Integer loginCount = 0;
 
     public String getUserName() {
         return userName;

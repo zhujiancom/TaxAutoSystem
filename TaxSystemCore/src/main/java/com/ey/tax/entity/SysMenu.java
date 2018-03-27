@@ -26,6 +26,9 @@ public class SysMenu extends BaseEntity {
     @Column(name="pid")
     private Long parentId;
 
+    @Column(name="menu_level")
+    private Integer menuLevel;
+
     public String getMenuName() {
         return menuName;
     }
@@ -56,5 +59,13 @@ public class SysMenu extends BaseEntity {
 
     public void setParentId(Long parentId) {
         this.parentId = parentId;
+    }
+
+    public Integer getMenuLevel() {
+        return menuLevel;
+    }
+
+    public void setMenuLevel(Integer menuLevel) {
+        this.menuLevel = menuLevel;
     }
 }

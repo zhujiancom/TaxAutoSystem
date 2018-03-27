@@ -6,6 +6,7 @@ import java.util.List;
  * Created by zhuji on 3/26/2018.
  */
 public class MenuModel {
+    private Long id;
 
     private String menuName;
 
@@ -13,7 +14,25 @@ public class MenuModel {
 
     private String description;
 
-    List<MenuModel> subMenuList;
+    private Long pid;
+
+    private Integer menuLevel;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getPid() {
+        return pid;
+    }
+
+    public void setPid(Long pid) {
+        this.pid = pid;
+    }
 
     public String getMenuName() {
         return menuName;
@@ -39,11 +58,11 @@ public class MenuModel {
         this.description = description;
     }
 
-    public List<MenuModel> getSubMenuList() {
-        return subMenuList;
+    public Integer getMenuLevel() {
+        return menuLevel;
     }
 
-    public void setSubMenuList(List<MenuModel> subMenuList) {
-        this.subMenuList = subMenuList;
+    public void setMenuLevel(Integer menuLevel) {
+        this.menuLevel = menuLevel;
     }
 }

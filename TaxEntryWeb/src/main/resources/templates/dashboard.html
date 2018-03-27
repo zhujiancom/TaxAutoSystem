@@ -103,7 +103,7 @@
                             </li>
                             <li>
                                 <div class="col-lg-3">Update Date: </div>
-                                <div class="col-lg-8"><span th:text="${userInfo.updatedate}"/></div>
+                                <div class="col-lg-8"><span th:text="${#dates.format(userInfo.updatedate,'yyyy-MM-dd HH:mm:ss')}"/></div>
                             </li>
                         </ul>
                     </nav>
@@ -146,6 +146,8 @@
         $('[data-toggle="offcanvas"]').click(function () {
             $('#wrapper').toggleClass('toggled');
         });
+
+        $("#sidebar-wrapper").mymenu({url:'/menu/load'});
     });
 </script>
 </body>

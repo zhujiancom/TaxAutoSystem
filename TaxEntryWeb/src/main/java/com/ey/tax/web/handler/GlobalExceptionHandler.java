@@ -1,6 +1,5 @@
 package com.ey.tax.web.handler;
 
-import com.ey.tax.jaxb.Request;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
