@@ -13,12 +13,12 @@
             for(var i=0,j=menuItems.length;i<j;i++){
                 var menuItem = menuItems[i];
                 if(menuItem.hasChild){
-                    var _liItem = $('<li class="dropdown"><a href="'+menuItem.url+'"><i class="fa fa-fw fa-folder"></i> '+menuItem.name+' <span class="caret"></span></a><ul class="dropdown-menu" role="menu"></ul></li>');
+                    var _liItem = $('<li class="dropdown"><a href="'+menuItem.url+'" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-folder"></i> '+menuItem.name+' <span class="caret"></span></a><ul class="dropdown-menu" role="menu"></ul></li>');
                     this.compositeMenuTree(menuItem.children,_liItem);
-                    ulBox.appendChild(_liItem);
+                    ulBox.append(_liItem);
                 }else{
                     var _liItem = $('<li><a href="'+menuItem.url+'"><i class="fa fa-fw fa-file"></i>'+menuItem.name+'</a></li>');
-                    ulBox.appendChild(_liItem);
+                    ulBox.append(_liItem);
                 }
             }
         },
@@ -32,12 +32,14 @@
                 success:function(data){
                    var menuItems = JSON.stringify(data);
                    console.log(menuItems);
-                   this.compositeMenuTree(menuItems,$(_self.$element));
+                   _self.compositeMenuTree(data,$(_self.$element));
                 }
             });
         }
     }
 
     $.fn.mymenu=function(options){
+        var menu = new MyMenu(this,options);
+        menu.load();
     }
 })(jQuery);

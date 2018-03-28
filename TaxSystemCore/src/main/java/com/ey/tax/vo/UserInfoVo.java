@@ -25,6 +25,8 @@ public class UserInfoVo {
 
     private Date updatedate;
 
+    private String headerImg;
+
     public String getName() {
         return name;
     }
@@ -95,5 +97,13 @@ public class UserInfoVo {
 
     public void setUpdatedate(Date updatedate) {
         this.updatedate = updatedate;
+    }
+
+    public String getHeaderImg() {
+        return headerImg;
+    }
+
+    public void setHeaderImg(String headerImg) {
+        this.headerImg = headerImg;
     }
 }

@@ -33,6 +33,9 @@ public class SysUser extends AccessoryEntity{
     @Column(name="login_count")
     private Integer loginCount = 0;
 
+    @Column(name="header_img")
+    private String headerImg;
+
     public String getUserName() {
         return userName;
     }
@@ -71,5 +74,13 @@ public class SysUser extends AccessoryEntity{
 
     public void setLoginCount(Integer loginCount) {
         this.loginCount = loginCount;
+    }
+
+    public String getHeaderImg() {
+        return headerImg;
+    }
+
+    public void setHeaderImg(String headerImg) {
+        this.headerImg = headerImg;
     }
 }

@@ -11,6 +11,7 @@
         <result property="createdate" column="createdate"/>
         <result property="updateman" column="updateman"/>
         <result property="updatedate" column="updatedate"/>
+        <result property="headerImg" column="header_img"/>
         <collection property="roles" resultMap="roleResultMap"/>
     </resultMap>
 
@@ -62,6 +63,7 @@
             tsu.createdate,
             tsu.updateman,
             tsu.updatedate,
+            tsu.header_img,
             tsr.role_name,
             tsr.pid as ROLE_PID
         FROM
@@ -69,7 +71,7 @@
         LEFT JOIN t_sys_user_role_ref tsurr ON tsr.id = tsurr.role_id
         LEFT JOIN t_sys_user tsu ON tsurr.user_id = tsu.id
         WHERE
-            tsu.id = 1;
+            tsu.id = #{userId};
     </select>
 
     <select id="findAllPermissions" resultType="com.ey.tax.entity.SysPermission">

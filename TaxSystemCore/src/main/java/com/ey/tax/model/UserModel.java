@@ -29,6 +29,8 @@ public class UserModel {
 
     private Date updatedate;
 
+    private String headerImg;
+
     public Long getId() {
         return id;
     }
@@ -107,5 +109,13 @@ public class UserModel {
 
     public void setUpdatedate(Date updatedate) {
         this.updatedate = updatedate;
+    }
+
+    public String getHeaderImg() {
+        return headerImg;
+    }
+
+    public void setHeaderImg(String headerImg) {
+        this.headerImg = headerImg;
     }
 }

@@ -29,6 +29,9 @@ public class SysMenu extends BaseEntity {
     @Column(name="menu_level")
     private Integer menuLevel;
 
+    @Column(name="menu_order")
+    private Integer menuOrder;
+
     public String getMenuName() {
         return menuName;
     }
@@ -67,5 +70,13 @@ public class SysMenu extends BaseEntity {
 
     public void setMenuLevel(Integer menuLevel) {
         this.menuLevel = menuLevel;
+    }
+
+    public Integer getMenuOrder() {
+        return menuOrder;
+    }
+
+    public void setMenuOrder(Integer menuOrder) {
+        this.menuOrder = menuOrder;
     }
 }

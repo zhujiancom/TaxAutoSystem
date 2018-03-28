@@ -7,6 +7,7 @@
         <result property="menuName" column="menu_name"/>
         <result property="menuUrl" column="menu_url"/>
         <result property="menuLevel" column="menu_level"/>
+        <result property="menuOrder" column="menu_order"/>
     </resultMap>
 
     <select id="findMenuItemsByUserId" parameterType="long" resultMap="menuResultMap">
@@ -16,7 +17,8 @@
         tsm.menu_name,
         tsm.menu_url,
         tsm.description,
-        tsm.menu_level
+        tsm.menu_level,
+        tsm.menu_order
         from t_sys_menu tsm
         left join t_sys_role_menu_ref tsrmr
         on tsm.id = tsrmr.menu_id

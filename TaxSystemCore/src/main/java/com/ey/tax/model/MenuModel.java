@@ -18,6 +18,8 @@ public class MenuModel {
 
     private Integer menuLevel;
 
+    private Integer menuOrder;
+
     public Long getId() {
         return id;
     }
@@ -64,5 +66,13 @@ public class MenuModel {
 
     public void setMenuLevel(Integer menuLevel) {
         this.menuLevel = menuLevel;
+    }
+
+    public Integer getMenuOrder() {
+        return menuOrder;
+    }
+
+    public void setMenuOrder(Integer menuOrder) {
+        this.menuOrder = menuOrder;
     }
 }
