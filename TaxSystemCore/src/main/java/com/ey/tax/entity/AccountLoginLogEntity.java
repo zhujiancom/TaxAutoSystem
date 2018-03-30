@@ -10,26 +10,27 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * Created by zhuji on 2/8/2018.
+ *
+ * 用户登录日志记录表
  */
 @Entity
-@Table(name="T_LOGIN_ACCOUNT_LOG")
+@Table(name="t_login_log")
 public class AccountLoginLogEntity extends BaseEntity{
-    @Column(name="ONLINE_TIME")
+    @Column(name="online_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date onlineTime;
 
-    @Column(name="OFFLINE_TIME")
+    @Column(name="offline_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date offlineTime;
 
-    @Column(name="STAY_TIME")
+    @Column(name="stay_time")
     private BigDecimal stayTime;
 
-    @Column(name="LOGIN_IP")
+    @Column(name="login_ip")
     private String loginIp;
 
-    @Column(name="SYS_USER_ID")
+    @Column(name="user_id")
     private Long userId;
 
     public Date getOnlineTime() {

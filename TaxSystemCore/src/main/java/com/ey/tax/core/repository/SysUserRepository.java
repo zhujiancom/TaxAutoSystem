@@ -2,6 +2,8 @@ package com.ey.tax.core.repository;
 
 import com.ey.tax.entity.SysUser;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,5 +11,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SysUserRepository extends JpaRepository<SysUser,Long> {
-    SysUser findByUserName(String username);
+    @Query("select u from SysUser u where u.userName=:username and u.enable=true")
+    SysUser findByUserName(@Param("username") String username);
 }

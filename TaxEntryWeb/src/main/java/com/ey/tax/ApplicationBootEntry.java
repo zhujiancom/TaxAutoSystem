@@ -2,19 +2,25 @@ package com.ey.tax;
 
 import com.ey.tax.config.GlobalPropertiesFactory;
 import com.ey.tax.utils.PropertiesUtil;
+import com.ey.tax.web.configuration.GlobalServletContextListener;
 import org.apache.commons.configuration.MapConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jersey.JerseyProperties;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.StandardEnvironment;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import javax.servlet.ServletContextListener;
 import java.util.Map;
 
 /**
@@ -42,6 +48,12 @@ public class ApplicationBootEntry extends SpringBootServletInitializer {
         propertySources.addFirst(new MapPropertySource(GLOBAL_CONFIG_PROPERTIES,envMap));
         new SpringApplicationBuilder(ApplicationBootEntry.class).environment(environment).build().run();
 
-//        SpringApplication.run(ApplicationBootEntry.class,args);
+    }
+
+    @Bean
+    ServletListenerRegistrationBean<ServletContextListener> globalServletListener(){
+        ServletListenerRegistrationBean<ServletContextListener> srb = new ServletListenerRegistrationBean<>();
+        srb.setListener(new GlobalServletContextListener());
+        return srb;
     }
 }

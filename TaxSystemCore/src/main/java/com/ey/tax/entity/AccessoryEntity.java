@@ -16,7 +16,6 @@ import java.util.Date;
  * Created by zhuji on 2/8/2018.
  */
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
         allowGetters = true)
 public class AccessoryEntity extends BaseEntity {

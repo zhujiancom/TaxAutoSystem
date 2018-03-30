@@ -44,6 +44,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.ey.tax</groupId>
+            <artifactId>TaxSystemWorkFlow</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
@@ -52,13 +58,19 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
-            <version>4.0.0</version>
+            <version>3.3.7</version>
         </dependency>
 
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
             <version>3.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator</artifactId>
+            <version>0.32</version>
         </dependency>
 
         <dependency>
@@ -77,6 +89,7 @@
             <artifactId>thymeleaf-extras-springsecurity4</artifactId>
             <version>2.1.2.RELEASE</version>
         </dependency>
+
     </dependencies>
 
 
@@ -84,8 +97,20 @@
         <finalName>TaxEntryWeb</finalName>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>${project.basedir}/src/main/resources</directory>
                 <filtering>true</filtering>
+                <excludes>
+                    <exclude>static/fonts/**</exclude>
+                    <exclude>static/fontawesome/webfonts/**</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>static/fonts/**</include>
+                    <include>static/fontawesome/webfonts/**</include>
+                </includes>
             </resource>
         </resources>
         <plugins>

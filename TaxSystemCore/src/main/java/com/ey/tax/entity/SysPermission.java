@@ -5,11 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Created by zhuji on 2/10/2018.
+ * 权限表
  */
 @Entity
-@Table(name="Sys_Permission")
-public class SysPermission extends AccessoryEntity {
+@Table(name="t_sys_permission")
+public class SysPermission extends BaseEntity {
     @Column(name = "name")
     private String name;
 
@@ -20,7 +20,7 @@ public class SysPermission extends AccessoryEntity {
     private String url;
 
     @Column(name = "pid")
-    private Long pId;
+    private Long parentId;
 
     public String getName() {
         return name;
@@ -46,11 +46,20 @@ public class SysPermission extends AccessoryEntity {
         this.url = url;
     }
 
-    public Long getpId() {
-        return pId;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setpId(Long pId) {
-        this.pId = pId;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
+
+    @Override
+    public String toString() {
+        return "SysPermission{" +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", parentId=" + parentId +
+                '}';
     }
 }

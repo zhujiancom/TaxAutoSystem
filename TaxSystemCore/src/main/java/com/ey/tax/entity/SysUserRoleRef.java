@@ -5,15 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Created by zhuji on 2/10/2018.
+ * 用户-角色关联表： 多对多关联
  */
 @Entity
-@Table(name="Sys_Role_User")
-public class SysRoleUser{
-    @Column(name = "SYS_USER_ID")
+@Table(name="t_sys_user_role_ref")
+public class SysUserRoleRef extends BaseEntity{
+    @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "SYS_ROLE_ID")
+    @Column(name = "role_id")
     private Long roleId;
 
     public Long getUserId() {

@@ -2,22 +2,35 @@ package com.ey.tax.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 /**
- * Created by zhuji on 2/10/2018.
+ * 角色表
  */
 @Entity
-@Table(name="Sys_Role")
+@Table(name="t_sys_role")
 public class SysRole extends AccessoryEntity {
-    @Column(name = "name")
-    private String name;
+    @Column(name = "role_name")
+    private String roleName;
 
-    public String getName() {
-        return name;
+    @Column(name="pid")
+    private Long parentId;
+
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 }
